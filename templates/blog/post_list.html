@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for object in object_list %}
+    <a href="{% url 'app:post_detail' object.id %}"><h1>{{ object.title }}</h1></a>
+    <br>
+    <h4><strong>{{ object.author }}</strong></h4>
+    <br>
+    {{ object.text }}
+    <br>
+    <h3>------------------------------------------------------------</h3>
+{% endfor %}
+{% endblock %}

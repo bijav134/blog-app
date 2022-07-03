@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>---------------------------------------------------------------</h3>
+
+    {% if not object.published_date %}
+        <a href="{% url 'app:publish' object.id %}"><h2>Publish</h2></a>
+    {% endif %}
+    <h1>{{object.title}}</h1>
+    <br>
+    <br>
+    {{object.text}}
+<h3>---------------------------------------------------------------</h3>
+<a href="{% url 'app:update' object.id %}"><h2>Update</h2></a>
+<a href="{% url 'app:delete' object.id %}"><h2>Delete</h2></a>
+
+<a href="{% url 'app:add_comment' object.id %}"><h2>Add Comment</h2></a>
+
+{% for comment in object.comments.all %}
+<h3>{{comment.author}}</h3>
+<p>{{comment.text}}</p>
+
+{% empty %}
+<h4>'No comment posted'</h4>
+
+
+{% endfor %}
+
+{% endblock %}

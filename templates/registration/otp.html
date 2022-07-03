@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="{% url 'app:otp' %}" method="POST">
+
+        {% csrf_token %}
+        <label for="otp" >Enter OTP</label>
+        <input type="text" id="otp" name="conf_otp">
+        <input type="hidden" name='otp' value={{otp}}>
+
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
